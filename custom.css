@@ -1,0 +1,31 @@
+html,body{
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+    background: black;
+}
+.wrapper{
+    max-width: 960px;
+    margin: auto;
+}
+.text{
+    width:100%;
+    margin-top:20px;
+    height: 100px;
+}
+.text>span{
+    font-size:2em;
+    margin-left:10px;
+    color:#fff;
+    font-weight: 300;
+}
+.image{
+    height: 500px;
+    width:100%;
+}
+.img{
+    height: 100%;
+    width:100%;
+    background: url('a.jpg') no-repeat center;
+    background-size:contain;
+}
