@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="custom.css">
     <link rel="icon" type="image/png" href="https://image.flaticon.com/icons/png/128/12/12195.png">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <title>Амаржаргал</title>
 </head>
 <body>
     <div class="wrapper">
         <div class="text flex center-center">
+            <span class="btn" >Night Mode</span>
             <span>#Camera</span>
             <span>#Dota</span>
             <span>#Code</span>
@@ -26,3 +28,11 @@
     </div>
 </body>
 </html>
+
+<script>
+$(document).ready(function(){
+    $(".btn").click(function(){
+        $('html,body').toggleClass('night');
+    });
+});
+</script>

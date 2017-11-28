@@ -8,6 +8,10 @@ html,body{
 	-webkit-animation: Gradient 15s ease infinite;
 	-moz-animation: Gradient 15s ease infinite;
 	animation: Gradient 15s ease infinite;
+	transition: .4s ;
+}
+.night{
+	background: black;
 }
 @-webkit-keyframes Gradient {
 	0% {
@@ -69,4 +73,17 @@ html,body{
     width:100%;
     background: url('a.jpg') no-repeat center;
     background-size:contain;
+}
+.btn{
+	border:2px solid white;
+	height: 20px;
+	border-radius:30px;
+	font-size:14px!important;
+	padding:10px 10px;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+.btn:hover{
+	background: black;
+	color:#fff;
 }
