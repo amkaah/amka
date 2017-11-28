@@ -26,13 +26,17 @@
             <div class="img"></div>
         </div>
     </div>
-</body>
-</html>
-
 <script>
-$(document).ready(function(){
-    $(".btn").click(function(){
+$(function(){
+    var activeClass =localStorage.getItem('nightmode');
+    $('.btn').click(function(){
         $('html,body').toggleClass('night');
+        localStorage.setItem('nightmode',$('html,body').attr('class'));
     });
+    if(activeClass != null){
+        $('html,body').addClass(activeClass);
+    }
 });
 </script>
+</body>
+</html>
