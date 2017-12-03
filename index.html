@@ -4,42 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+    <title>TV-QUIZ</title>
     <link rel="stylesheet" href="base.css">
     <link rel="stylesheet" href="custom.css">
-    <link rel="icon" type="image/png" href="https://image.flaticon.com/icons/png/128/12/12195.png">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <title>Амаржаргал</title>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="https://i.ytimg.com/vi/HIM6w6NlhdY/maxresdefault.jpg"/>
-    <meta property="og:title" content="Амаржаргал :))"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 </head>
-<body>
-    <div class="wrapper">
-        <div class="text flex center-center">
-            <span class="btn" >Night Mode</span>
-            <span>#Camera</span>
-            <span>#Dota</span>
-            <span>#Code</span>
-            <span>#Travel</span>
-            <span>#Music</span>
-            <span>#Funny</span>
+<body onload="ReadData()">
+    <div class="wrapper flex wrap">
+        <div class="w100" style="background:#00CBAF;">
+            <p class="main-title left"><i class="fa fa-file-text-o" aria-hidden="true"></i> TV-QUIZ</p>
         </div>
-        <div class="image">
-            <div class="img"></div>
-        </div>
+       <div class="l">
+            <div class="q-data flex column">
+                <p class="title">Нийт асуулт</p>
+                   <ul id="all"></ul>
+            </div>
+       </div>
+       <div class="r">
+            <div class="q-insert flex column">
+                <div class="w100 flex flex-end mtop20">
+                    <label for="">Асуутлаа оруулна уу?</label>
+                </div>    
+                <div class="w100 flex flex-end mtop20">
+                    <textarea name="" id="question" cols="5" rows="5" placeholder="Your Question"></textarea>
+                </div>
+                <div class="w100 flex flex-end mtop20">
+                    <label for="">Хариултаа оруулна уу?</label>
+                </div>
+                <div class="w100 flex column">
+                    <div class="w100 flex flex-end">
+                        <input type="text" class="q-answer" id="answer1" placeholder="Your answer">
+                    </div>
+                    <div class="w100 flex flex-end">
+                        <input type="text" class="q-answer" id="answer2" placeholder="Your answer">
+                    </div>
+                    <div class="w100 flex flex-end">
+                        <input type="text" class="q-answer" id="answer3" placeholder="Your answer">
+                    </div>
+                    <div class="w100 flex flex-end">
+                        <input type="text" class="q-answer" id="answer4" placeholder="Your answer">
+                    </div>
+                </div>
+                <div class="w100 flex flex-end mtop20">
+                    <label for="">Зөв хариултаа оруулна уу?</label>
+                </div>               
+                <div class="w100 flex flex-end">
+                    <input type="text" id="true-answer" class="q-answer" placeholder="#0">
+                </div>
+                <div class="w100 flex  flex-end mtop20">
+                        <label for="">Tag оруулна уу?</label>
+                </div>                       
+                <div class="w100 flex flex-end mtop20">
+                    <input type="text" id="tag" placeholder="#dota">
+                </div>
+                <div class="w100 flex  flex-end mtop20">
+                        <label for="">Үе оруулна уу?</label>
+                </div>                       
+                <div class="w100 flex flex-end mtop20 options">
+                        <select name=""  id="level">
+                            <option value="1">Easy</option>
+                            <option value="2">Meduim</option>
+                            <option value="3">Hard</option>
+                        </select>
+                </div>
+                <div class="w100 flex center-center mtop20 mbot20">
+                    <input type="submit" value="Оруулах" class="q-btn mtop20">
+                </div>
+            </div>
+       </div>
     </div>
-<script>
-$(function(){
-    var activeClass =localStorage.getItem('nightmode');
-    $('.btn').click(function(){
-        $('html,body').toggleClass('night');
-        localStorage.setItem('nightmode',$('html,body').attr('class'));
-    });
-    if(activeClass != null){
-        $('html,body').addClass(activeClass);
-    }
-});
-</script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+    <script src="quiz.js"></script>
 </body>
 </html>
