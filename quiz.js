@@ -9,13 +9,13 @@
   firebase.initializeApp(config);
 
   $('.q-btn').click(function(){
-     var question = $("#question").val();
-     var answer1 = $("#answer1").val();
-     var answer2 = $("#answer2").val();
-     var answer3 = $("#answer3").val();
-     var answer4 = $("#answer4").val();
-     var true_answer = $("#true-answer").val();
-     var tag = $("#tag").val();
+     var question = $.trim($("#question").val());
+     var answer1 = $.trim($("#answer1").val());
+     var answer2 = $.trim($("#answer2").val());
+     var answer3 = $.trim($("#answer3").val());
+     var answer4 = $.trim($("#answer4").val());
+     var true_answer = $.trim($("#true-answer").val());
+     var tag = $.trim($("#tag").val());
      var level = $("#level").val();
      if(question.length > 0 && answer1.length > 0 && answer2.length > 0 && answer3.length > 0 && answer4.length > 0 && true_answer.length > 0
      && tag.length > 0 && level.length > 0)
@@ -29,8 +29,11 @@
              document.getElementById("tag").value = "";
              document.getElementById("level").value = "";
              InsertData(question,answer1,answer2,answer3,answer4,true_answer,tag,level);
+            $(".q-success").fadeIn("slow", function() {
+                $(this).delay(2000).fadeOut('slow');
+            });
      }else{
-         alert('Алдаа гарчлөө амьдралш дээ...')
+         alert('Бүх талбарыг бөглөнө үү ???')
      }
   });
 
@@ -116,4 +119,89 @@
             }
         });
     }
+
+    $('#question').keyup(function() {
+        var data = $('#question').val();
+        if(data.length == 0){
+            $('#question').removeClass('success');
+            $('#question').addClass('error');
+        }else{
+            $('#question').removeClass('error');
+            $('#question').addClass('success');
+        }
+    });
+    $('#answer1').keyup(function() {
+        var data = $('#answer1').val();
+        if(data.length == 0){
+            $('#answer1').removeClass('success');
+            $('#answer1').addClass('error');
+        }else{
+            $('#answer1').removeClass('error');
+            $('#answer1').addClass('success');
+        }
+    });
+    $('#answer2').keyup(function() {
+        var data = $('#answer2').val();
+        if(data.length == 0){
+            $('#answer2').removeClass('success');
+            $('#answer2').addClass('error');
+        }else{
+            $('#answer2').removeClass('error');
+            $('#answer2').addClass('success');
+        }
+    });
+    $('#answer3').keyup(function() {
+        var data = $('#answer3').val();
+        if(data.length == 0){
+            $('#answer3').removeClass('success');
+            $('#answer3').addClass('error');
+        }else{
+            $('#answer3').removeClass('error');
+            $('#answer3').addClass('success');
+        }
+    });
+    $('#answer4').keyup(function() {
+        var data = $('#answer4').val();
+        if(data.length == 0){
+            $('#answer4').removeClass('success');
+            $('#answer4').addClass('error');
+        }else{
+            $('#answer4').removeClass('error');
+            $('#answer4').addClass('success');
+        }
+    });
+    $('#true-answer').keyup(function() {
+        var data = $('#true-answer').val();
+        if(data.length == 0){
+            $('#true-answer').removeClass('success');
+            $('#true-answer').addClass('error');
+        }else{
+            $('#true-answer').removeClass('error');
+            $('#true-answer').addClass('success');
+        }
+    });
+    $("#true-answer").keypress(function(event) {
+    return /\d/.test(String.fromCharCode(event.keyCode));
+    });
+    $('#tag').keyup(function() {
+        var data = $('#tag').val();
+        if(data.length == 0){
+            $('#tag').removeClass('success');
+            $('#tag').addClass('error');
+        }else{
+            $('#tag').removeClass('error');
+            $('#tag').addClass('success');
+        }
+    });
+    $('#level').keyup(function() {
+        var data = $('#level').val();
+        if(data.length == 0){
+            $('#level').removeClass('success');
+            $('#level').addClass('error');
+        }else{
+            $('#level').removeClass('error');
+            $('#level').addClass('success');
+        }
+    });
+    
 

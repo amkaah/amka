@@ -91,3 +91,23 @@ label{
     border: 0.5px solid	#B0B0B0;
     width:80%;
 }
+#question:focus{
+    border: 0.5px solid	#B0B0B0;
+}
+.error{
+    border: 0.5px solid	red!important;
+}
+.success{
+    border: 0.5px solid	#00CBAF!important;
+}
+.q-success{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #00CBAF;
+    width:200px;
+    color:#fff;
+    padding: 20px;
+    display: none; 
+    text-align: center;
+}
