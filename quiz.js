@@ -44,6 +44,77 @@
      }
   });
 
+  //Update Data
+
+   function UpdateData(id,question,answer1,answer2,answer3,answer4,true_answer,tag,level) {
+             // A post entry.
+            var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
+            var Data = {
+                Question: question,
+                Chooses: [
+                answer1,
+                answer2,
+                answer3,
+                answer4
+                ],
+                Answer: true_answer,
+                tag: tag,
+                level: level,
+                date: date,
+             };
+             var personRef = firebase.database().ref().child("quiz").child(id);
+
+             personRef.once('value', function (snapshot) {
+
+                 if (snapshot.val() === null) {
+                     /* does not exist */
+                     alert('does not exist');
+                 } else {
+                     personRef.update(Data);
+                 }
+
+             });
+   }
+  $('.q-update').click(function(){
+         var id = $.trim($("#id").val());
+         var question = $.trim($("#question").val());
+         var answer1 = $.trim($("#answer1").val());
+         var answer2 = $.trim($("#answer2").val());
+         var answer3 = $.trim($("#answer3").val());
+         var answer4 = $.trim($("#answer4").val());
+         var true_answer = $.trim($("#true-answer").val());
+         var tag = $.trim($("#tag").val());
+         var level = $("#level").val();
+        if(question.length > 0 && answer1.length > 0 && answer2.length > 0 && answer3.length > 0 && answer4.length > 0 && true_answer.length > 0
+        && tag.length > 0 && level.length > 0)
+        {
+             document.getElementById("question").value = "";
+             document.getElementById("answer1").value = "";
+             document.getElementById("answer2").value = "";
+             document.getElementById("answer3").value = "";
+             document.getElementById("answer4").value = "";
+             document.getElementById("true-answer").value = "";
+             document.getElementById("tag").value = "";
+             document.getElementById("level").value = "";
+             $('#question').removeClass('success');
+             $('#answer1').removeClass('success');
+             $('#answer2').removeClass('success');
+             $('#answer3').removeClass('success');
+             $('#answer4').removeClass('success');
+             $('#true-answer').removeClass('success');
+             $('#tag').removeClass('success');
+             $('#level').removeClass('success');
+             UpdateData(id,question,answer1,answer2,answer3,answer4,true_answer,tag,level);
+             $(".q-success>span").text('Амжилттай засагдлаа');
+             $(".q-success").fadeIn("slow", function() {
+                 $(this).delay(2000).fadeOut('slow');
+             });
+            $('.q-update').css('display','none');
+            $('.q-btn').css('display','block');
+        }else{
+         alert('Бүх талбарыг бөглөнө үү ???')
+     }
+  });
   //Insert data
   function InsertData(question,answer1,answer2,answer3,answer4,true_answer,tag,level){
       var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
@@ -111,6 +182,8 @@
     //Edit Data
 
     function EditData(quizId){
+        $('.q-btn').css('display','none');
+        $('.q-update').css('display','block').css('position','relative').css('bottom','20px');
         FindData(quizId);
     }
     function FindData(quizId) {
@@ -119,14 +192,15 @@
                 /* does not exist */
              alert('Андаа ийм юм алгаа!!!');
             } else {
-                                document.getElementById("question").value = snapshot.val().Question ;
-                                document.getElementById("answer1").value = "";
-                                document.getElementById("answer2").value = "";
-                                document.getElementById("answer3").value = "";
-                                document.getElementById("answer4").value = "";
-                                document.getElementById("true-answer").value = "";
-                                document.getElementById("tag").value = "";
-                                document.getElementById("level").value = "";
+                                document.getElementById("id").value = snapshot.key;
+                                document.getElementById("question").value = snapshot.val().Question;
+                                document.getElementById("answer1").value = snapshot.val().Chooses[0];
+                                document.getElementById("answer2").value = snapshot.val().Chooses[1];
+                                document.getElementById("answer3").value = snapshot.val().Chooses[2];
+                                document.getElementById("answer4").value = snapshot.val().Chooses[3];
+                                document.getElementById("true-answer").value = snapshot.val().Answer;
+                                document.getElementById("tag").value = snapshot.val().tag;
+                                document.getElementById("level").value = snapshot.val().level;
             }
         });
     }

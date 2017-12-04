@@ -35,7 +35,7 @@ html,body{
     margin-right:10px;
 }
 .q-btn{
-    width:20%;
+    min-width:20%;
     padding:15px 10px;
     border-radius: 10px;
     background: #00CBAF;
@@ -47,6 +47,22 @@ html,body{
     text-transform: uppercase;
 }
 .q-btn:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.q-update{
+    min-width:20%;
+    padding:15px 10px;
+    border-radius: 10px;
+    background: #00CBAF;
+    color:#fff;
+    transition: .8s ease;
+    outline: none;
+    border:none;
+    cursor: pointer;
+    display: none;
+    text-transform: uppercase;
+}
+.q-update:hover{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 label{
