@@ -79,6 +79,15 @@
 .w100{
     width:100%;
 }
+.w20{
+    width:20%;
+}
+.w80{
+    width:80%;
+}
+.mtop20{
+    margin-top:20px;
+}
 .mtop20{
     margin-top:20px;
 }

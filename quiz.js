@@ -7,7 +7,6 @@
     messagingSenderId: "830577001738"
   };
   firebase.initializeApp(config);
-
   $('.q-btn').click(function(){
      var question = $.trim($("#question").val());
      var answer1 = $.trim($("#answer1").val());
@@ -28,10 +27,18 @@
              document.getElementById("true-answer").value = "";
              document.getElementById("tag").value = "";
              document.getElementById("level").value = "";
+             $('#question').removeClass('success');
+             $('#answer1').removeClass('success');
+             $('#answer2').removeClass('success');
+             $('#answer3').removeClass('success');
+             $('#answer4').removeClass('success');
+             $('#true-answer').removeClass('success');
+             $('#tag').removeClass('success');
+             $('#level').removeClass('success');
              InsertData(question,answer1,answer2,answer3,answer4,true_answer,tag,level);
-            $(".q-success").fadeIn("slow", function() {
-                $(this).delay(2000).fadeOut('slow');
-            });
+             $(".q-success").fadeIn("slow", function() {
+                 $(this).delay(2000).fadeOut('slow');
+             });
      }else{
          alert('Бүх талбарыг бөглөнө үү ???')
      }
@@ -39,8 +46,9 @@
 
   //Insert data
   function InsertData(question,answer1,answer2,answer3,answer4,true_answer,tag,level){
+      var date = new Date().toJSON().slice(0,10).replace(/-/g,'/');
       var Data = {
-        Question: question,
+         Question: question,
          Chooses: [
           answer1,
           answer2,
@@ -50,6 +58,7 @@
          Answer: true_answer,
          tag: tag,
          level: level,
+         date: date,
      };
      var newPostKey = firebase.database().ref().child('quiz').push().key;
      var updates = {};
@@ -61,21 +70,23 @@
 
   function ReadData(){
      var ref = firebase.database().ref().child("quiz");
-     ref.on("value", function (snapshot) {
+     ref.orderByChild('date').on("value", function (snapshot) {
          $('#all').empty();
+         var count = 0;
          snapshot.forEach(function (childSnapshot) {
+             count += 1;
              // key will be "ada" the first time and "alan" the second time
              var key = childSnapshot.key;
              // childData will be the actual contents of the child
              var childData = childSnapshot.val();
              var li = '<li class="flex wrap">'
-                         + '<span class="q-data-title">'+childData.Question + '</span>' 
+                         + '<span class="q-data-title">Асуулт'+ count +'</span>' 
                          + '<a href="#" onClick="DeleteData(`'+key+'`)"><i class="fa fa-times" aria-hidden="true"></i></a>' 
                          + '<a href="#" onClick="EditData(`'+key+'`)"><i class="fa fa-pencil" aria-hidden="true"></i></a>' + 
                       '</li>';
              $('#all').append(li);
         });
-        console.log(snapshot.val().length);
+        // console.log(snapshot.val().length);
      }, function (error) {
          console.log("Error: " + error.code);
      });

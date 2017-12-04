@@ -21,7 +21,18 @@ html,body{
 .q-answer{
     margin-top:20px;
     height: 40px;
+    width:100%;
+}
+.true-answer{
+    margin-top:20px;
+    height: 40px;
     width:80%;
+}
+.w20{
+    height: 40px;
+}
+.w20 span{
+    margin-right:10px;
 }
 .q-btn{
     width:20%;
@@ -42,7 +53,7 @@ label{
     margin:10px;
 }
 .options select{
-    border:1px solid #2e2e2e;
+    border: 0.5px solid	#B0B0B0;
     padding:2px 2px;
     border-radius:5px;
     height: 30px;
@@ -70,6 +81,7 @@ label{
 }
 .q-data ul li{
     list-style: none;
+    height: 20px;
     padding:10px 10px;
 }
 .q-data a{
